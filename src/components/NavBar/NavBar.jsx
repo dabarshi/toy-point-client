@@ -9,11 +9,6 @@ const NavBar = () => {
     <li><Link to='/my-toys'>My Toys</Link></li>
     <li><Link to='/add-toy'>Add A Toy</Link></li>
     <li><Link to='/blogs'>Blogs</Link></li>
-        {/* <li><link to='/'>Home</link></li>
-        <li><link to='/all-toys'>All Toys</link></li>
-        <li><link to='/my-toys'>My Toys</link></li>
-        <li><link to='/add-toy'>Add A Toy</link></li>
-        <li><link to='/blog'>Blogs</link></li> */}
         
     </>;
 
@@ -41,7 +36,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-xs md:btn">Get started</a>
+                <Link to='/login' className="btn btn-xs md:btn">Login</Link>
             </div>
         </div>
     );
