@@ -4,8 +4,17 @@ import logo from '../../assets/logo.png';
 const NavBar = () => {
 
     const navItems = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+    <li><Link to='/'>Home</Link></li>
+    <li><Link to='/all-toys'>All Toys</Link></li>
+    <li><Link to='/my-toys'>My Toys</Link></li>
+    <li><Link to='/add-toy'>Add A Toy</Link></li>
+    <li><Link to='/blogs'>Blogs</Link></li>
+        {/* <li><link to='/'>Home</link></li>
+        <li><link to='/all-toys'>All Toys</link></li>
+        <li><link to='/my-toys'>My Toys</link></li>
+        <li><link to='/add-toy'>Add A Toy</link></li>
+        <li><link to='/blog'>Blogs</link></li> */}
+        
     </>;
 
     return (
@@ -25,7 +34,7 @@ const NavBar = () => {
                 <Link to='/' className="btn btn-ghost normal-case text-sm md:text-xl">Toy Point</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 font-semibold text-white">
                  {
                     navItems
                  }
