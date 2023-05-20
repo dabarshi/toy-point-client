@@ -8,7 +8,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
 
-    const { createNewUser } = useContext(AuthContext);
+    const { createNewUser, updateUser } = useContext(AuthContext);
 
     // handle Google sign in
     const handleClick = () => {
@@ -40,6 +40,15 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                // update photo and name
+
+                updateUser(user, name, photo)
+                .then(() => {})
+                .catch(error => {
+                    console.log(error)
+                })
+
             })
             .catch(error => {
                 console.log(error)
