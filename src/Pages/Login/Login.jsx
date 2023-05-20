@@ -72,13 +72,13 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login"  className='btn btn-primary'/>
                             </div>
                         </form>
-                        <p className='bg-red-800 my-2 p-[2px] text-white'><small>{error}</small></p>
+                        <p className='my-2 text-orange-600'><small>{error}</small></p>
 
                         <p><small>New to Here? Please <Link to='/register' className='btn-link'>Register</Link></small></p>
                     </div>
