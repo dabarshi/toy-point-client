@@ -37,7 +37,7 @@ const Register = () => {
         <div className="hero mt-6 py-6 min-h-screen bg-slate-700">
 
             <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center space-y-6">
-                {/* Google login and title */}
+                {/* Google Register and title */}
                 <div className='w-full md:text-center md:flex md:flex-col items-center space-y-4'>
                     <div>
                         <img src={logo} alt="toy-point" className='h-20' />
@@ -64,24 +64,31 @@ const Register = () => {
 
 
                         <form onSubmit={handleSubmit}>
+                        {/* Name */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="Your Name" className="input input-bordered" required />
                             </div>
+
+                            {/* Email */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                             </div>
+
+                            {/* Photo */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
                                 <input type="text" name='photo' placeholder="Photo URL" className="input input-bordered" required />
                             </div>
+
+                            {/* Password */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
