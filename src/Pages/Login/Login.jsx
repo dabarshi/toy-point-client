@@ -6,13 +6,19 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
 
-    const {loginWithEmailAndPassword} = useContext(AuthContext);
+    const {loginWithEmailAndPassword, googleSignIn} = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
     // handle Google sign in
     const handleClick = () => {
         console.log('clicked')
+        googleSignIn()
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.log(error))
     }
 
     // handle email password login

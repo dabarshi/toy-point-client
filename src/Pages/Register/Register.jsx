@@ -8,11 +8,17 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
 
-    const { createNewUser, updateUser } = useContext(AuthContext);
+    const { createNewUser, updateUser, googleSignIn } = useContext(AuthContext);
 
     // handle Google sign in
     const handleClick = () => {
         console.log('clicked')
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.log(error))
     }
 
     // handle email password login
@@ -44,16 +50,19 @@ const Register = () => {
                 // update photo and name
 
                 updateUser(user, name, photo)
-                .then(() => {})
-                .catch(error => {
-                    console.log(error)
-                })
+                    .then(() => { })
+                    .catch(error => {
+                        console.log(error)
+                    })
 
             })
             .catch(error => {
                 console.log(error)
             })
     }
+
+
+
 
     return (
         <div className="hero mt-6 py-6 min-h-screen bg-slate-700">
