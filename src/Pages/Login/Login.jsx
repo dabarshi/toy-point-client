@@ -1,7 +1,36 @@
+import { Link } from 'react-router-dom';
 import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
+import { useState } from 'react';
 
 const Login = () => {
+
+    const [error, setError] = useState('');
+
+    // handle Google sign in
+    const handleClick = () => {
+        console.log('clicked')
+    }
+
+    // handle email password login
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length < 6) {
+            setError('Password must be more then 6 characters')
+            return;
+        }
+
+        const loginInfo = {email, password}
+        console.log(loginInfo)
+    }
+
     return (
         <div className="hero mt-6 py-6 min-h-screen bg-slate-700">
 
@@ -13,12 +42,14 @@ const Login = () => {
                     </div>
 
                     <h1 className="text-5xl font-bold text-white">Login</h1>
-                    <div className='border-2 p-2 text-center shadow-2xl'>
+
+                    <div onClick={handleClick} className='border-2 p-2 text-center shadow-2xl cursor-pointer'>
                         <h1 className='text-white font-bold'>
                             <FcGoogle className='inline mx-3' />
                             <span className='me-3'>Log-in with Google</span>
                         </h1>
                     </div>
+
                 </div>
                 {/* divider */}
 
@@ -30,28 +61,26 @@ const Login = () => {
                     <div className="card-body">
 
 
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <input type="submit" value="Login"  className='btn btn-primary'/>
                             </div>
                         </form>
+                        <p className='bg-red-800 my-2 p-[2px] text-white'><small>{error}</small></p>
 
-
+                        <p><small>New to Here? Please <Link to='/register' className='btn-link'>Register</Link></small></p>
                     </div>
                 </div>
             </div>
