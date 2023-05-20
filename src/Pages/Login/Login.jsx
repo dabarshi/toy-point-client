@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
+
+    const {loginWithEmailAndPassword} = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -29,6 +32,19 @@ const Login = () => {
 
         const loginInfo = {email, password}
         console.log(loginInfo)
+
+        // sign in with email and password
+
+        loginWithEmailAndPassword(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+
     }
 
     return (
