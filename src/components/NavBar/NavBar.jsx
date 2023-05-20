@@ -1,15 +1,25 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 const NavBar = () => {
+    const { logOut, user } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+        .then(()=>{})
+        .catch(error => console.log(error))
+    }
 
     const navItems = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/all-toys'>All Toys</Link></li>
-    <li><Link to='/my-toys'>My Toys</Link></li>
-    <li><Link to='/add-toy'>Add A Toy</Link></li>
-    <li><Link to='/blogs'>Blogs</Link></li>
-        
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/all-toys'>All Toys</Link></li>
+        <li><Link to='/my-toys'>My Toys</Link></li>
+        <li><Link to='/add-toy'>Add A Toy</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
+
     </>;
 
     return (
@@ -30,13 +40,30 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-semibold text-white">
-                 {
-                    navItems
-                 }
+                    {
+                        navItems
+                    }
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn btn-xs md:btn">Login</Link>
+                {
+                    user ?
+                        <div className='flex justify-center items-center gap-5'>
+                            <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
+                                <div className="w-12 rounded-full">
+                                    {   user.photoURL? 
+                                        <img src={user.photoURL}/>
+                                        : <FaUserCircle />}
+                                </div>
+                            </div>
+                            <div>
+                                <button onClick={handleSignOut} className='btn btn-xs md:btn'>Logout</button>
+                            </div>
+
+
+                        </div>
+                        : <Link to='/login' className="btn btn-xs md:btn">Login</Link>
+                }
             </div>
         </div>
     );
