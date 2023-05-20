@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from '../../Providers/AuthProvider';
 
 
 const Register = () => {
     const [error, setError] = useState('');
+
+    const { createNewUser } = useContext(AuthContext);
 
     // handle Google sign in
     const handleClick = () => {
@@ -31,6 +34,16 @@ const Register = () => {
 
         const registerInfo = { name, email, photo, password }
         console.log(registerInfo)
+
+        // create new user with email and password
+        createNewUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     return (
@@ -64,7 +77,7 @@ const Register = () => {
 
 
                         <form onSubmit={handleSubmit}>
-                        {/* Name */}
+                            {/* Name */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
