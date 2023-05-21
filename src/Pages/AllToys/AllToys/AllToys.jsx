@@ -1,24 +1,52 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToyRow from "../ToyRow/ToyRow";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { FadeLoader } from "react-spinners";
 
 
 const AllToys = () => {
+    const { loading, setLoading } = useContext(AuthContext);
+
     const [loadAllToy, setLoadAllToy] = useState([]);
+    const [search, setSearch] = useState('');
 
-    const url = `http://localhost:5000/toys?limit=${20}`;
 
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const toyName = event.target.toyName.value;
+        setSearch(toyName);
+    }
+
+
+
+
+    let url = `http://localhost:5000/toys?toyName=${search}`;
     useEffect(() => {
+
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setLoadAllToy(data)
+                setLoading(false)
             })
-    }, [url])
+    }, [url, setLoading])
+
+    if(loading) {
+        return <div className="h-screen w-full grid place-items-center"><FadeLoader color="#36d7b7" /></div>;
+    }
     return (
         <div>
             <h1 className='text-center font-extrabold text-2xl shadow-slate-800 md:text-5xl my-12'>All Toys</h1>
-            <div>
+            <div className="mb-12 text-center">
+                <form onSubmit={handleSubmit}>
+                    <h1 className="font-bold my-2">Search By Toy Name</h1>
+                    <input type="text" placeholder="search name" name='toyName' className="input input-bordered input-error w-full max-w-xs" />
+                    <input type="submit" value="Search" className="btn ml-2" />
+                </form>
+            </div>
+            <div className="mb-12">
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         {/* head */}
