@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const ToyRow = ({toy}) => {
-    const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details} = toy;
+    const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, quantity} = toy;
     return (
         <tr>
             <td>

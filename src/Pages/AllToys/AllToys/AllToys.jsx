@@ -5,7 +5,7 @@ import { FadeLoader } from "react-spinners";
 
 
 const AllToys = () => {
-    const { loading, setLoading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
 
     const [loadAllToy, setLoadAllToy] = useState([]);
     const [search, setSearch] = useState('');
@@ -29,9 +29,9 @@ const AllToys = () => {
             .then(data => {
                 // console.log(data)
                 setLoadAllToy(data)
-                setLoading(false)
+                
             })
-    }, [url, setLoading])
+    }, [url])
 
     if(loading) {
         return <div className="h-screen w-full grid place-items-center"><FadeLoader color="#36d7b7" /></div>;
@@ -39,6 +39,7 @@ const AllToys = () => {
     return (
         <div>
             <h1 className='text-center font-extrabold text-2xl shadow-slate-800 md:text-5xl my-12'>All Toys</h1>
+            {/* search form */}
             <div className="mb-12 text-center">
                 <form onSubmit={handleSubmit}>
                     <h1 className="font-bold my-2">Search By Toy Name</h1>
@@ -46,6 +47,7 @@ const AllToys = () => {
                     <input type="submit" value="Search" className="btn ml-2" />
                 </form>
             </div>
+            {/* Toy data display in tabular form */}
             <div className="mb-12">
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
