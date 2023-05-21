@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
@@ -7,6 +7,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const { createNewUser, updateUser, googleSignIn } = useContext(AuthContext);
 
@@ -16,7 +17,8 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
+                navigate('/')
             })
             .catch(error => console.log(error))
     }
@@ -46,7 +48,8 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                form.reset();
+                
+
 
                 // update photo and name
 
@@ -55,6 +58,9 @@ const Register = () => {
                     .catch(error => {
                         console.log(error)
                     })
+                    
+                    form.reset();
+                    navigate('/');
 
             })
             .catch(error => {

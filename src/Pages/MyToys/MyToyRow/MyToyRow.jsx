@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const MyToyRow = ({toy}) => {
@@ -13,7 +14,7 @@ const MyToyRow = ({toy}) => {
                     </div>
                     <div>
                         <div className="font-bold">{toyName}</div>
-                        {/* <div className="text-sm opacity-50">United States</div> */}
+                        
                     </div>
                 </div>
             </td>
@@ -26,7 +27,7 @@ const MyToyRow = ({toy}) => {
             <td>{price}</td>
             <td>{quantity}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">View details</button>
+                <Link className="btn btn-ghost btn-xs">View details</Link>
             </th>
         </tr>
     );

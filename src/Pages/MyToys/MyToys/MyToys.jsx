@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const MyToys = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [toyInfo, setToyInfo] = useState([]);
 
 
