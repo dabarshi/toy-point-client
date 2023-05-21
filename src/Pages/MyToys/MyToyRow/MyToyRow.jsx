@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 
-const MyToyRow = ({toy}) => {
-    const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity} = toy;
+const MyToyRow = ({ toy }) => {
+    const { _id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity } = toy;
 
     const handleDelete = (_id) => {
         console.log(_id)
-        
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -16,15 +16,26 @@ const MyToyRow = ({toy}) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
+
+                fetch(`http://localhost:5000/toy/${_id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount === 1) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
             }
-          })
+        })
     }
     return (
         <tr>
@@ -37,7 +48,7 @@ const MyToyRow = ({toy}) => {
                     </div>
                     <div>
                         <div className="font-bold">{toyName}</div>
-                        
+
                     </div>
                 </div>
             </td>
@@ -55,7 +66,7 @@ const MyToyRow = ({toy}) => {
                 <Link to={`/update/${_id}`} className="btn btn-ghost btn-xs">Update</Link>
             </th>
             <th>
-                <button onClick={()=>handleDelete(_id)} className="btn btn-ghost btn-xs">delete</button>
+                <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">delete</button>
             </th>
         </tr>
     );
