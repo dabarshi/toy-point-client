@@ -15,7 +15,7 @@ const Register = () => {
 
     // handle Google sign in
     const handleClick = () => {
-        
+
         googleSignIn()
             .then(result => {
                 const user = result.user;
@@ -50,7 +50,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                
+
 
 
                 // update photo and name
@@ -60,13 +60,18 @@ const Register = () => {
                     .catch(error => {
                         console.log(error)
                     })
-                    
-                    form.reset();
-                    navigate(from);
+
+                form.reset();
+                navigate(from);
 
             })
             .catch(error => {
                 console.log(error)
+
+                if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+                    setError("Email Already Exist")
+                }
+                else (setError(error.message));
             })
     }
 

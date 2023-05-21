@@ -9,7 +9,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const {loginWithEmailAndPassword, googleSignIn} = useContext(AuthContext);
+    const { loginWithEmailAndPassword, googleSignIn } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -17,12 +17,12 @@ const Login = () => {
     const handleClick = () => {
         console.log('clicked')
         googleSignIn()
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            navigate(from)
-        })
-        .catch(error => console.log(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from)
+            })
+            .catch(error => setError(error))
     }
 
     // handle email password login
@@ -31,7 +31,7 @@ const Login = () => {
         event.preventDefault();
 
         const form = event.target;
-        
+
         const email = form.email.value;
         const password = form.password.value;
 
@@ -40,21 +40,30 @@ const Login = () => {
             return;
         }
 
-        const loginInfo = {email, password}
+        const loginInfo = { email, password }
         console.log(loginInfo)
 
         // sign in with email and password
 
         loginWithEmailAndPassword(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-            navigate(from)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+                navigate(from)
+            })
+            .catch(error => {
+                console.log(error)
+                if (error.message == "Firebase: Error (auth/wrong-password).") {
+                    setError("Please, enter correct password")
+                    return;
+                }
+                if (error.message == "Firebase: Error (auth/user-not-found).") {
+                    setError("Email does not match");
+                    return;
+                }
+                setError(error.message);
+            })
 
 
     }
@@ -82,7 +91,7 @@ const Login = () => {
                 {/* divider */}
 
                 <div className='text-white p-2 border-2 rounded-full'><p>OR</p></div>
-                
+
 
                 {/* Login form */}
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -103,7 +112,7 @@ const Login = () => {
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" value="Login"  className='btn btn-primary'/>
+                                <input type="submit" value="Login" className='btn btn-primary' />
                             </div>
                         </form>
                         <p className='my-2 text-orange-600'><small>{error}</small></p>
