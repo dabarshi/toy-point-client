@@ -20,7 +20,7 @@ const Gallery = () => {
                 <h1 className='text-center font-extrabold text-2xl shadow-slate-800 md:text-5xl mb-12'>Action Figures Gallery</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 place-items-center my-5'>
                 <img src={luffy1} className='rounded-2xl p-3' />
-                <img src={superman1} className='rounded-2xl p-3' />
+                <img src={superman1} className='rounded-2xl p-3 w-1/2' />
                 <img src={luffy2} className='rounded-2xl p-3' />
                 <img src={batman1} className='rounded-2xl p-3' />
                 <img src={wonderWoman1} className='rounded-2xl p-3' />

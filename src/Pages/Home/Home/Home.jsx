@@ -1,5 +1,6 @@
 import Gallery from "../Gallery/Gallery";
 import HomeBanner from "../HomeBanner/HomeBanner";
+import ShopByCategory from "../ShopByCategory/ShopByCategory";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <HomeBanner></HomeBanner>
             <Gallery></Gallery>
+            <ShopByCategory></ShopByCategory>
             More Home comming
         </div>
     );
