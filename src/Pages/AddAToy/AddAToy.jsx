@@ -24,6 +24,22 @@ const AddAToy = () => {
         const toyInfo = {toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
 
         console.log(toyInfo)
+
+        // post data to server
+        fetch('http://localhost:5000/toys', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toyInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.insertedId) {
+                alert('Successfully Added')
+            }
+        })
     }
 
     return (
