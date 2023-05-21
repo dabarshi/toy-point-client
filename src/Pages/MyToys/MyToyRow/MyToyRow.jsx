@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const MyToyRow = ({toy}) => {
-    const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details} = toy;
+    const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity} = toy;
     return (
         <tr>
             <td>
@@ -25,9 +25,14 @@ const MyToyRow = ({toy}) => {
             </td>
             <td>{subCategory}</td>
             <td>{price}</td>
+            <td>{rating}</td>
             <td>{quantity}</td>
+
             <th>
-                <Link className="btn btn-ghost btn-xs">View details</Link>
+                <Link to={`/update/${_id}`} className="btn btn-ghost btn-xs">Update</Link>
+            </th>
+            <th>
+                <button className="btn btn-ghost btn-xs">delete</button>
             </th>
         </tr>
     );
