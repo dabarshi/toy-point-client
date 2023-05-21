@@ -38,6 +38,7 @@ const AddAToy = () => {
             console.log(data)
             if(data.insertedId) {
                 alert('Successfully Added')
+                form.reset();
             }
         })
     }

@@ -12,7 +12,7 @@ const Register = () => {
 
     // handle Google sign in
     const handleClick = () => {
-        console.log('clicked')
+        
         googleSignIn()
             .then(result => {
                 const user = result.user;
@@ -46,6 +46,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
 
                 // update photo and name
 
