@@ -5,7 +5,7 @@ import ToyRow from "../ToyRow/ToyRow";
 const AllToys = () => {
     const [loadAllToy, setLoadAllToy] = useState([]);
 
-    const url = `http://localhost:5000/toys?limit=${2}`;
+    const url = `http://localhost:5000/toys?limit=${20}`;
 
     useEffect(() => {
         fetch(url)
@@ -14,7 +14,7 @@ const AllToys = () => {
                 console.log(data)
                 setLoadAllToy(data)
             })
-    }, [])
+    }, [url])
     return (
         <div>
             <h1 className='text-center font-extrabold text-2xl shadow-slate-800 md:text-5xl my-12'>All Toys</h1>
@@ -24,15 +24,22 @@ const AllToys = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
-                                <th></th>
+                                <th>Toy</th>
+                                <th>Seller</th>
+                                <th>Sub-category</th>
+                                <th>Price</th>
+                                <th>Available Quantity</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* row 1 */}
-                            <ToyRow></ToyRow>
+                            {
+                                loadAllToy.map(toy => <ToyRow
+                                    key={toy._id}
+                                    toy={toy}
+                                ></ToyRow>)
+                            }
+
                         </tbody>
 
                     </table>
