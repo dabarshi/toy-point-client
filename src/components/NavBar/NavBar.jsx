@@ -9,8 +9,8 @@ const NavBar = () => {
 
     const handleSignOut = () => {
         logOut()
-        .then(()=>{})
-        .catch(error => console.log(error))
+            .then(() => { })
+            .catch(error => console.log(error))
     }
 
     const navItems = <>
@@ -49,13 +49,13 @@ const NavBar = () => {
                 {
                     user ?
                         <div className='flex justify-center items-center gap-5'>
-                            <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
-                                <div className="w-12 rounded-full">
-                                    {   user.photoURL? 
-                                        <img src={user.photoURL}/>
-                                        : <FaUserCircle />}
+                            {user.photoURL ?
+                                <div className="avatar tooltip tooltip-bottom" data-tip={user.displayName}>
+                                    <div className="w-12 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
                                 </div>
-                            </div>
+                                : <div className='tooltip tooltip-bottom' data-tip={user.displayName}><FaUserCircle/></div>}
                             <div>
                                 <button onClick={handleSignOut} className='btn btn-xs md:btn'>Logout</button>
                             </div>

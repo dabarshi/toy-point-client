@@ -1,4 +1,4 @@
-import img2 from '../../../assets/Banner/2.png';
+import img2 from '../../../assets/toyGallary/wonderWoman/1.jpg';
 import img3 from '../../../assets/Banner/3.jpg';
 import img4 from '../../../assets/Banner/4.jpg';
 import img5 from '../../../assets/Banner/5.jpg';
