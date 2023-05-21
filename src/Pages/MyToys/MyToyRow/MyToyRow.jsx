@@ -1,8 +1,31 @@
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 
 const MyToyRow = ({toy}) => {
     const {_id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity} = toy;
+
+    const handleDelete = (_id) => {
+        console.log(_id)
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+    }
     return (
         <tr>
             <td>
@@ -32,7 +55,7 @@ const MyToyRow = ({toy}) => {
                 <Link to={`/update/${_id}`} className="btn btn-ghost btn-xs">Update</Link>
             </th>
             <th>
-                <button className="btn btn-ghost btn-xs">delete</button>
+                <button onClick={()=>handleDelete(_id)} className="btn btn-ghost btn-xs">delete</button>
             </th>
         </tr>
     );
