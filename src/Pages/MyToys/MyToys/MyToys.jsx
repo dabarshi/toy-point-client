@@ -45,7 +45,10 @@ const MyToys = () => {
                         {
                             toyInfo.map(toy => <MyToyRow
                                 key={toy._id}
-                                toy={toy}></MyToyRow>)
+                                toy={toy}
+                                toyInfo={toyInfo}
+                                setToyInfo= {setToyInfo}
+                                ></MyToyRow>)
                         }
                     </tbody>
 
