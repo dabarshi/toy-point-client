@@ -1,8 +1,23 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
-const ToyCard = ({toy}) => {
+const ToyCard = ({ toy }) => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const {toyName, toyPhoto, price, rating } = toy;
+    const handleClick = _id => {
+        if(user){
+            navigate(`/toy/${_id}`)
+        } else {
+            Swal.fire('You have to log in first to view details')
+            navigate(`/toy/${_id}`)
+        }
+    }
+
+    const { _id, toyName, toyPhoto, price, rating } = toy;
 
     return (
         <div className="card bg-base-100 shadow-xl">
@@ -16,7 +31,7 @@ const ToyCard = ({toy}) => {
                     <div className="badge badge-secondary">Rating :{rating}</div>
                 </div>
                 <div className="card-actions">
-                    <button className="btn btn-outline">View Details</button>
+                    <button onClick={() => handleClick(_id)} className="btn btn-outline">View Details</button>
                 </div>
             </div>
         </div>
