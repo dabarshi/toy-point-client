@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FadeLoader } from "react-spinners";
+import useTitle from "../../hooks/useTitle";
 
 
 const SingleToy = () => {
+    useTitle('Toy Details')
     const toy = useLoaderData();
     const {loading} = useContext(AuthContext);
 

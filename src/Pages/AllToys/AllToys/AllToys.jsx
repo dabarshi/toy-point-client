@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import ToyRow from "../ToyRow/ToyRow";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FadeLoader } from "react-spinners";
+import useTitle from "../../../hooks/useTitle";
 
 
 const AllToys = () => {
+    useTitle('All Toys')
     const { loading } = useContext(AuthContext);
 
     const [loadAllToy, setLoadAllToy] = useState([]);

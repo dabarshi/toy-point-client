@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import notFound from '../../assets/notFound.jpg'
+import useTitle from "../../hooks/useTitle";
 
 
 const NotFound = () => {
+    useTitle('Page Not Found');
     return (
         <div className="h-screen grid place-items-center">
             <div className="flex flex-col align-middle">

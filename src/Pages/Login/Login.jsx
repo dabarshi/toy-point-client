@@ -4,8 +4,10 @@ import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+    useTitle('Login');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
