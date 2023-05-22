@@ -8,9 +8,18 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toyInfo, setToyInfo] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [sorting, setSorting] = useState('');
 
 
-    const url = `http://localhost:5000/selective-toys?email=${user.email}`;
+    const handleSort = event => {
+        const value = event.target.value;
+        if (value == "Ascending"){
+            setSorting(1);
+        }else {setSorting(-1)}
+    }
+
+
+    const url = `http://localhost:5000/selective-toys?email=${user.email}&sorting=${sorting}`;
     useEffect(() => {
         setLoading(true)
         fetch(url)
@@ -29,6 +38,13 @@ const MyToys = () => {
     return (
         <div className="h-screen">
             <h1 className='text-center font-extrabold text-2xl shadow-slate-800 md:text-5xl my-12'>My Toys</h1>
+            <div className="mb-4 text-center">
+                <select onChange={handleSort} className="select select-bordered w-full max-w-xs">
+                    <option disabled selected>Sort on Price</option>
+                    <option>Ascending</option>
+                    <option>Descending</option>
+                </select>
+            </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

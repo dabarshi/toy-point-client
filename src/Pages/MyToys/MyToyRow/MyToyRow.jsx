@@ -69,7 +69,7 @@ const MyToyRow = ({ toy, toyInfo, setToyInfo }) => {
             <td>{rating}</td>
             <td>{quantity}</td>
             <th>
-                <button onClick={viewDetails} className="btn btn-xs">View Details</button>
+                <button onClick={viewDetails} className="btn btn-xs">Description</button>
             </th>
 
             <th>
