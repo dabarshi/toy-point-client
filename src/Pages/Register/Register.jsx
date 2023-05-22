@@ -3,6 +3,7 @@ import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -60,7 +61,7 @@ const Register = () => {
                     .catch(error => {
                         console.log(error)
                     })
-
+                Swal.fire('Registration Successful')
                 form.reset();
                 navigate(from);
 

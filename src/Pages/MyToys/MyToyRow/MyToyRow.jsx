@@ -3,10 +3,14 @@ import Swal from 'sweetalert2'
 
 
 const MyToyRow = ({ toy, toyInfo, setToyInfo }) => {
-    const { _id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity } = toy;
+    const { _id, toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details } = toy;
+
+    const viewDetails = () => {
+        Swal.fire(details)
+    }
 
     const handleDelete = (_id) => {
-        console.log(_id)
+
 
         Swal.fire({
             title: 'Are you sure?',
@@ -28,7 +32,7 @@ const MyToyRow = ({ toy, toyInfo, setToyInfo }) => {
                         if (data.deletedCount === 1) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your Toy has been deleted.',
                                 'success'
                             )
 
@@ -64,6 +68,9 @@ const MyToyRow = ({ toy, toyInfo, setToyInfo }) => {
             <td>{price}</td>
             <td>{rating}</td>
             <td>{quantity}</td>
+            <th>
+                <button onClick={viewDetails} className="btn btn-xs">View Details</button>
+            </th>
 
             <th>
                 <Link to={`/update/${_id}`} className="btn btn-secondary btn-xs">Update</Link>

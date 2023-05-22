@@ -39,7 +39,7 @@ const UpdateToy = () => {
             console.log(data)
             if(data.modifiedCount > 0) {
                 Swal.fire({
-                    title: 'Update Successfull',
+                    title: 'Update Successful',
                     showClass: {
                       popup: 'animate__animated animate__fadeInDown'
                     },

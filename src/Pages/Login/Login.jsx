@@ -3,6 +3,7 @@ import logo from '../../assets/toyPoint/tinyLogo.png';
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -40,8 +41,6 @@ const Login = () => {
             return;
         }
 
-        const loginInfo = { email, password }
-        console.log(loginInfo)
 
         // sign in with email and password
 
@@ -49,6 +48,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire('Log-in successful')
                 form.reset();
                 navigate(from)
             })

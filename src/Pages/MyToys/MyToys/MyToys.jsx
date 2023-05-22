@@ -5,17 +5,20 @@ import { FadeLoader } from "react-spinners";
 
 
 const MyToys = () => {
-    const { user, loading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [toyInfo, setToyInfo] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
     const url = `http://localhost:5000/selective-toys?email=${user.email}`;
     useEffect(() => {
+        setLoading(true)
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 setToyInfo(data)
+                setLoading(false);
             })
     }, [url])
 
@@ -37,17 +40,22 @@ const MyToys = () => {
                             <th>Price</th>
                             <th>Rating</th>
                             <th>Available Quantity</th>
+                            <th>Description</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            toyInfo.map(toy => <MyToyRow
-                                key={toy._id}
-                                toy={toy}
-                                toyInfo={toyInfo}
-                                setToyInfo= {setToyInfo}
+
+                            loading ?
+                                <div className="w-full grid place-items-center"><FadeLoader color="#36d7b7" /></div>
+                                :
+                                toyInfo.map(toy => <MyToyRow
+                                    key={toy._id}
+                                    toy={toy}
+                                    toyInfo={toyInfo}
+                                    setToyInfo={setToyInfo}
                                 ></MyToyRow>)
                         }
                     </tbody>
