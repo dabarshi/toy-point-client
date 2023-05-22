@@ -63,10 +63,10 @@ const MyToyRow = ({ toy }) => {
             <td>{quantity}</td>
 
             <th>
-                <Link to={`/update/${_id}`} className="btn btn-ghost btn-xs">Update</Link>
+                <Link to={`/update/${_id}`} className="btn btn-secondary btn-xs">Update</Link>
             </th>
             <th>
-                <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">delete</button>
+                <button onClick={() => handleDelete(_id)} className="btn btn-warning btn-xs">delete</button>
             </th>
         </tr>
     );
