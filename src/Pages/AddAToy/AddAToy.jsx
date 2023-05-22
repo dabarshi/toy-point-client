@@ -29,7 +29,7 @@ const AddAToy = () => {
         console.log(toyInfo)
 
         // post data to server
-        fetch('http://localhost:5000/toys', {
+        fetch('https://y-six-olive.vercel.app/toys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -13,7 +13,7 @@ const ShopByCategory = () => {
         setSubCategory(name);
     }
 
-    const url = `http://localhost:5000/toys?subCategory=${subCategory}`;
+    const url = `https://y-six-olive.vercel.app/toys?subCategory=${subCategory}`;
     console.log(tabIndex);
     useEffect(() => {
         fetch(url)

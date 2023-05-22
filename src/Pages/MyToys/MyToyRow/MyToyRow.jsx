@@ -23,7 +23,7 @@ const MyToyRow = ({ toy, toyInfo, setToyInfo }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/toy/${_id}`, {
+                fetch(`https://y-six-olive.vercel.app/toy/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

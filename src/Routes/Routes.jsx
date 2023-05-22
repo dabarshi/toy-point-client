@@ -44,12 +44,12 @@ const router = createBrowserRouter([
         {
             path:'/toy/:id',
             element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+            loader: ({params}) => fetch(`https://y-six-olive.vercel.app/toy/${params.id}`)
         },
         {
             path: '/update/:id',
             element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+            loader: ({params}) => fetch(`https://y-six-olive.vercel.app/toy/${params.id}`)
         },
         {
             path: '/blogs',

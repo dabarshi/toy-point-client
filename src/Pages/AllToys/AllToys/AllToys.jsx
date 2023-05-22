@@ -23,7 +23,7 @@ const AllToys = () => {
 
 
 
-    let url = `http://localhost:5000/toys?toyName=${search}`;
+    let url = `https://y-six-olive.vercel.app/toys?toyName=${search}`;
     useEffect(() => {
 
         fetch(url)

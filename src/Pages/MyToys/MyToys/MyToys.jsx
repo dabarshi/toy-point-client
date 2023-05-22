@@ -21,7 +21,7 @@ const MyToys = () => {
     }
 
 
-    const url = `http://localhost:5000/selective-toys?email=${user.email}&sorting=${sorting}`;
+    const url = `https://y-six-olive.vercel.app/selective-toys?email=${user.email}&sorting=${sorting}`;
     useEffect(() => {
         setLoading(true)
         fetch(url)

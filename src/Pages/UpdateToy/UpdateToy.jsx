@@ -29,7 +29,7 @@ const UpdateToy = () => {
 
 
         // post data to server
-        fetch(`http://localhost:5000/toy/${toy._id}`, {
+        fetch(`https://y-six-olive.vercel.app/toy/${toy._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
