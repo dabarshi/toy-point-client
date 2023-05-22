@@ -1,16 +1,22 @@
 
 
-const ToyCard = () => {
+const ToyCard = ({toy}) => {
+
+    const {toyName, toyPhoto, price, rating } = toy;
+
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                <img src={toyPhoto} alt="toy" className="rounded-xl w-full max-w-sm" />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className="card-body items-center text-center space-y-3">
+                <h2 className="card-title">{toyName}</h2>
+                <div className="flex justify-center align-middle gap-5">
+                    <div className="badge badge-secondary">Price :${price}</div>
+                    <div className="badge badge-secondary">Rating :{rating}</div>
+                </div>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button className="btn btn-outline">View Details</button>
                 </div>
             </div>
         </div>

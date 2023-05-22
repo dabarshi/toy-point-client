@@ -1,19 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ToyCard from '../ToyCard/ToyCard';
 
 const ShopByCategory = () => {
 
     const [tabIndex, setTabIndex] = useState(0);
-    // const [dc, setDc] = useState([]);
-    // const [onePiece, setOnePiece] = useState([]);
-    // const [Marvel, setMarvel] = useState([]);
-
     const [toys, setToys] = useState([]);
     const [subCategory, setSubCategory] = useState('');
 
     const handleClick = (name) => {
-            setSubCategory(name);
+        setSubCategory(name);
     }
 
     const url = `http://localhost:5000/toys?subCategory=${subCategory}`;
@@ -24,21 +21,6 @@ const ShopByCategory = () => {
             .then(data => {
                 setToys(data)
             })
-        // fetch(`http://localhost:5000/toys?subCategory=DC`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setDc(data)
-        //     })
-        // fetch(`http://localhost:5000/toys?subCategory=One Piece`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setOnePiece(data)
-        //     })
-        // fetch(`http://localhost:5000/toys?subCategory=Marvel`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setMarvel(data)
-        //     })
     }, [url])
 
     return (
@@ -52,19 +34,34 @@ const ShopByCategory = () => {
                         <Tab onClick={() => handleClick('DC')}>DC</Tab>
                     </TabList>
                     <TabPanel>
-                        {
-                            toys.map(toy => <p key={toy._id}>{toy.toyName}</p>)
-                        }
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <ToyCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></ToyCard>)
+                            }
+                        </div>
                     </TabPanel>
                     <TabPanel>
-                        {
-                            toys.map(toy => <p key={toy._id}>{toy.toyName}</p>)
-                        }
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <ToyCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></ToyCard>)
+                            }
+                        </div>
                     </TabPanel>
                     <TabPanel>
-                        {
-                            toys.map(toy => <p key={toy._id}>{toy.toyName}</p>)
-                        }
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                            {
+                                toys.map(toy => <ToyCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></ToyCard>)
+                            }
+                        </div>
                     </TabPanel>
                 </Tabs>
             </div>
