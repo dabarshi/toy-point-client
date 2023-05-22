@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom";
+import notFound from '../../assets/notFound.jpg'
 
 
 const NotFound = () => {
     return (
-        <div>
-            404
+        <div className="h-screen grid place-items-center">
+            <div className="flex flex-col align-middle">
+                <img src={notFound} alt="" className="h-80" />
+                <Link to='/' className="btn btn-primary">Back to Home</Link>
+            </div>
         </div>
     );
 };
