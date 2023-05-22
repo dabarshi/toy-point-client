@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddAToy = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -21,7 +22,7 @@ const AddAToy = () => {
         const quantity = form.quantity.value;
         const details = form.details.value;
 
-        const toyInfo = {toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
+        const toyInfo = { toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
 
         console.log(toyInfo)
 
@@ -33,14 +34,22 @@ const AddAToy = () => {
             },
             body: JSON.stringify(toyInfo)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.insertedId) {
-                alert('Successfully Added')
-                form.reset();
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Successfully Added',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+                    form.reset();
+                }
+            })
     }
 
     return (
@@ -50,12 +59,12 @@ const AddAToy = () => {
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {/* name */}
+                            {/* name */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Toy Name</span>
                                 </label>
-                                <input type="text" name="toyName" placeholder="Toy Name" className="input input-bordered"  required/>
+                                <input type="text" name="toyName" placeholder="Toy Name" className="input input-bordered" required />
                             </div>
                             {/* Toy photo url */}
                             <div className="form-control">
@@ -107,13 +116,13 @@ const AddAToy = () => {
                                 <input type="text" name='quantity' placeholder="quantity" className="input input-bordered" />
                             </div>
                         </div>
-                            {/* Details Description*/}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Description</span>
-                                </label>
-                                <input type="text" name='details' placeholder="description" className="input input-bordered" />
-                            </div>
+                        {/* Details Description*/}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Description</span>
+                            </label>
+                            <input type="text" name='details' placeholder="description" className="input input-bordered" />
+                        </div>
                         <div className="form-control mt-6">
                             <input type="submit" value="Add Toy" className="btn btn-primary" />
                         </div>

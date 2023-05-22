@@ -7,7 +7,7 @@ const ShopByCategory = () => {
 
     const [tabIndex, setTabIndex] = useState(0);
     const [toys, setToys] = useState([]);
-    const [subCategory, setSubCategory] = useState('');
+    const [subCategory, setSubCategory] = useState('Marvel');
 
     const handleClick = (name) => {
         setSubCategory(name);

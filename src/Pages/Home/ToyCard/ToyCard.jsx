@@ -7,7 +7,9 @@ import Swal from "sweetalert2";
 const ToyCard = ({ toy }) => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { _id, toyName, toyPhoto, price, rating } = toy;
 
+    // handle view details button click
     const handleClick = _id => {
         if(user){
             navigate(`/toy/${_id}`)
@@ -17,14 +19,14 @@ const ToyCard = ({ toy }) => {
         }
     }
 
-    const { _id, toyName, toyPhoto, price, rating } = toy;
+
 
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={toyPhoto} alt="toy" className="rounded-xl w-full max-w-sm" />
             </figure>
-            <div className="card-body items-center text-center space-y-3">
+            <div className="card-body items-center justify-end text-center space-y-3">
                 <h2 className="card-title">{toyName}</h2>
                 <div className="flex justify-center align-middle gap-5">
                     <div className="badge badge-secondary">Price :${price}</div>

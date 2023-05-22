@@ -23,7 +23,7 @@ const UpdateToy = () => {
         const quantity = form.quantity.value;
         const details = form.details.value;
 
-        const updateToyInfo = {toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
+        const updateToyInfo = { toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
 
 
         // post data to server
@@ -34,22 +34,21 @@ const UpdateToy = () => {
             },
             body: JSON.stringify(updateToyInfo)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount > 0) {
-                Swal.fire({
-                    title: 'Update Successful',
-                    showClass: {
-                      popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                      popup: 'animate__animated animate__fadeOutUp'
-                    }
-                  })
-                
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Update Successful',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+                }
+            })
     }
     return (
         <div className="my-10">

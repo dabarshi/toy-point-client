@@ -16,8 +16,8 @@ const NavBar = () => {
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/all-toys'>All Toys</Link></li>
-        <li><Link to='/my-toys'>My Toys</Link></li>
-        <li><Link to='/add-toy'>Add A Toy</Link></li>
+        {user && <li><Link to='/my-toys'>My Toys</Link></li>}
+        {user && <li><Link to='/add-toy'>Add A Toy</Link></li>}
         <li><Link to='/blogs'>Blogs</Link></li>
 
     </>;
@@ -55,7 +55,7 @@ const NavBar = () => {
                                         <img src={user.photoURL} />
                                     </div>
                                 </div>
-                                : <div className='tooltip tooltip-bottom' data-tip={user.displayName}><FaUserCircle/></div>}
+                                : <div className='tooltip tooltip-bottom' data-tip={user.displayName}><FaUserCircle /></div>}
                             <div>
                                 <button onClick={handleSignOut} className='btn btn-xs md:btn'>Logout</button>
                             </div>
