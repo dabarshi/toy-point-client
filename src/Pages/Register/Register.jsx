@@ -52,7 +52,7 @@ const Register = () => {
         createNewUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
 
 
 
@@ -69,7 +69,7 @@ const Register = () => {
 
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
 
                 if (error.message == "Firebase: Error (auth/email-already-in-use).") {
                     setError("Email Already Exist")

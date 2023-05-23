@@ -1,6 +1,4 @@
-// import superman1 from '../../../assets/toyGallary/superman/1.webp';
-// import wonderWoman1 from '../../../assets/toyGallary/wonderWoman/1.jpg';
-// import luffy7 from '../../../assets/toyGallary/luffy/6_.jpg';
+
 import superman2 from '../../../assets/toyGallary/superman/2.jpg';
 import superman3 from '../../../assets/toyGallary/superman/3.webp';
 import batman1 from '../../../assets/toyGallary/batman/1.jpg';

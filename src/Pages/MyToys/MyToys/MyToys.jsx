@@ -27,7 +27,7 @@ const MyToys = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setToyInfo(data)
                 setLoading(false);
             })
