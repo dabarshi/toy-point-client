@@ -26,7 +26,9 @@ const Home = () => {
                     <h1 className="font-bold text-3xl">In The Market</h1>
                 </div>
                 <div className="p-4 text-center">
-                    <p>The Toy Point has always been interested in curating the finest toys for our customers.Our main focus is always to pick the best of the best. That is why we hand pick all items in our inventory.</p>
+                    <p>
+                        The Toy Point is more than just a marketplace. We foster a thriving community of like-minded individuals who share their expertise, insights, and enthusiasm for action figures. Connect with fellow collectors, engage in discussions, and stay up-to-date with the latest news, releases, and events in the action figure world.
+                    </p>
                 </div>
             </div>
         </div>
