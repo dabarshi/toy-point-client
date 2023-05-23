@@ -6,7 +6,8 @@ const Footer = () => {
             <div>
                 <img src={logo} alt="" />
                 <h2 className='font-bold text-xl'>Toy Point</h2>
-                <p>Dhaka, 123</p>
+                <p>Phone: +880-170050033</p>
+                <p>Address: Dhaka, 123</p>
                 <p>Email: toypoint@gmail.com</p>
             </div>
             <div>
