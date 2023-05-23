@@ -27,8 +27,6 @@ const NewArrival = () => {
                     }
                 </div>
             </Marquee>
-
-
         </div>
     );
 };
