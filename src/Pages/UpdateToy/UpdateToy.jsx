@@ -15,17 +15,11 @@ const UpdateToy = () => {
 
         const form = event.target;
 
-        const toyName = form.toyName.value;
-        const toyPhoto = form.toyPhoto.value;
-        const sellerName = form.sellerName.value;
-        const email = form.email.value;
-        const subCategory = form.subCategory.value;
         const price = form.price.value;
-        const rating = form.rating.value;
         const quantity = form.quantity.value;
         const details = form.details.value;
 
-        const updateToyInfo = { toyName, toyPhoto, sellerName, email, subCategory, price, rating, quantity, details };
+        const updateToyInfo = {  price, quantity, details };
 
 
         // post data to server
