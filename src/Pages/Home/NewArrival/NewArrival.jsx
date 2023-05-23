@@ -18,7 +18,7 @@ const NewArrival = () => {
                 <p className="font-bold">Check out our new action figures</p>
             </div>
             <Marquee>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4">
                     {
                         newToy.map(toy => <ToyCard
                             key={toy._id}
