@@ -7,7 +7,7 @@ const NewArrival = () => {
     const [newToy, setNewToy] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/new-toys')
+        fetch('https://y-six-olive.vercel.app/new-toys')
             .then(res => res.json())
             .then(data => setNewToy(data))
     }, [])
